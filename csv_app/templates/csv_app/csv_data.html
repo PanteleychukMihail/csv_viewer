@@ -1,0 +1,80 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>CSV Data</title>
+    <script src="{% static 'js/filter.js' %}"></script>
+</head>
+<body>
+<nav class="nav-bar">
+        <ul class="nav-list">
+            <li><a href="{% url 'collection_list' %}" class="nav-link">Collection List</a></li>
+            <li><a href="{% url 'upload_csv' %}" class="nav-link">Upload CSV</a></li>
+        </ul>
+    </nav>
+
+<h1>{{ collection_name }}</h1>
+<form method="get" onsubmit="applyFilter(); return false;">
+    {% csrf_token %}
+    <label>Select Columns:</label><br>
+    <div class="checkbox-container">
+        {% for header in headers %}
+            <input type="checkbox" id="{{ header }}" name="columns" value="{{ header }}" checked>
+            <label for="{{ header }}">{{ header }}</label>
+        {% endfor %}
+    </div>
+    <br>
+    <div class="filter-row">
+        <div class="filter-item">
+            <label for="column_select1">Select filter 1:</label>
+            <select id="column_select1" name="column1">
+                <option value="">-- Select Column --</option>
+                {% for header in headers %}
+                    <option value="{{ header }}">{{ header }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="filter-item">
+            <label for="column_value1">Value 1:</label>
+            <input type="text" id="column_value1" name="value1">
+        </div>
+    </div>
+    <div class="filter-row">
+        <div class="filter-item">
+            <label for="column_select2">Select filter 2:</label>
+            <select id="column_select2" name="column2">
+                <option value="">-- Select Column --</option>
+                {% for header in headers %}
+                    <option value="{{ header }}">{{ header }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="filter-item">
+            <label for="column_value2">Value 2:</label>
+            <input type="text" id="column_value2" name="value2">
+        </div>
+    </div>
+    <button type="submit">Apply Filter</button>
+</form>
+<table id="csv_table">
+    <thead>
+    <tr>
+        {% for header in headers %}
+            <th>{{ header }}</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in csv_data %}
+        <tr>
+            {% for key, value in row.items %}
+                <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

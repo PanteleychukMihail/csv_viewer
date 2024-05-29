@@ -1,15 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 <head>
     <meta charset="UTF-8">
     <title>Upload CSV</title>
 </head>
 <body>
-    <h2>Upload CSV File</h2>
+<nav class="nav-bar">
+        <ul class="nav-list">
+            <li><a href="{% url 'collection_list' %}" class="nav-link">Collection List</a></li>
+        </ul>
+    </nav>
+    <h1>Upload CSV File</h1>
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="file" name="csv_file" accept=".csv" required>
-        <button type="submit">Загрузить</button>
+        <button type="submit">Download</button>
     </form>
+    {% if upload_success %}
+
+{% endif %}
+
 </body>
 </html>

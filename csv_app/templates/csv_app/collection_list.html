@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>Collection List</title>
+</head>
+<body>
+<nav class="nav-bar">
+        <ul class="nav-list">
+            <li><a href="{% url 'upload_csv' %}" class="nav-link">Upload CSV</a></li>
+        </ul>
+    </nav>
+    <h1>Collection List</h1>
+    <ul>
+        {% for collection in collections %}
+        <li><a href="{% url 'csv_data' collection_name=collection %}">{{ collection }}</a></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

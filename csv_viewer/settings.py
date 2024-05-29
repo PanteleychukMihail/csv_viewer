@@ -97,9 +97,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'csv_app/static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MONGO_DB_URI = os.getenv('Mongo_DB_URI')
 MONGO_DB_NAME = os.getenv('MONGO_DB_NAME')
+
