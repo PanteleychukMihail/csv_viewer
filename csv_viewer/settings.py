@@ -12,7 +12,6 @@ DEBUG = True if os.getenv('DEBUG', 'false').lower() in ('1', 'true') else False
 
 ALLOWED_HOSTS = [os.getenv('DJANGO_ALLOWED_HOSTS')]
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,7 +54,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'csv_viewer.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -69,7 +67,6 @@ DATABASES = {
         'PORT': os.getenv('POSTGRES_PORT')
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -89,7 +86,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -101,13 +97,9 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MONGO_DB_URI = os.getenv('Mongo_DB_URI')
+MONGO_DB_NAME = os.getenv('MONGO_DB_NAME')
