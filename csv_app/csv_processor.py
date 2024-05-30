@@ -28,9 +28,13 @@ class CSVProcessor:
         """Check if the provided file is a valid CSV file."""
         try:
             uploaded_file_content = file.read(1024).decode('utf-8')
-            dialect = csv.Sniffer().sniff(uploaded_file_content)
+            lines = uploaded_file_content.splitlines()
+            if len(lines) < 2:
+                return False
+            csv.reader([lines[0]])
+            csv.reader([lines[1]])
             return True
-        except (csv.Error, UnicodeDecodeError):
+        except (csv.Error, UnicodeDecodeError, IndexError):
             return False
 
     def get_collection_name(self, file_name: str, headers: List[str]) -> str:
