@@ -44,3 +44,11 @@ python manage.py runserver
 python3 -m pytest
 ```
 
+## Screenshots 
+1. ![Index](screenshots/Screenshot index.png)
+2. ![Wrong file's type](screenshots/Screenshot wrong type.png)
+3. ![File upload](screenshots/Screenshot file in db.png)
+4. ![Working on/off columns](screenshots/Screenshot working filters.png)
+5. ![Working filters](screenshots/Screenshot working many filters.png)
+6. ![Collection list](screenshots/Screenshot collections list.png)
+   
