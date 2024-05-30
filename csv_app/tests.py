@@ -1,6 +1,3 @@
-from io import StringIO
-from unittest.mock import Mock, patch, MagicMock
-
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, Client
 from django.urls import reverse
